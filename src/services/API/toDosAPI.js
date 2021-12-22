@@ -11,12 +11,12 @@ export function fetchToDos() {
 
 export function addToDo({ id, title }) {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({ id, title }), 1000);
+    setTimeout(() => resolve({ id, title }), 500);
   });
 }
 
 export function toggleToDo({ id, isCompleted }) {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({ id, isCompleted }), 1000);
+    setTimeout(() => resolve({ id, isCompleted }), 250);
   });
 }
