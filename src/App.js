@@ -1,31 +1,26 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Dashboard from './pages/Dashboard';
+import Header from './components/Header';
 import Summary from './pages/Summary';
 import { fetchToDos } from './services/API/toDosAPI';
 
-import './App.css';
+const Main = styled.main`
+  margin: 0 auto;
+  max-width: 720px;
+  padding-bottom: 30px;
+`;
 
 function App() {
   const { data, status } = useQuery('toDos', fetchToDos);
+
   return (
-    <div className="App">
-      <header>
-        <h1>My to-do app</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/summary">Summary</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main>
+    <>
+      <Header />
+      <Main>
         <Routes>
           <Route
             path="/"
@@ -36,8 +31,8 @@ function App() {
             element={<Summary status={status} toDos={data} />}
           />
         </Routes>
-      </main>
-    </div>
+      </Main>
+    </>
   );
 }
 
